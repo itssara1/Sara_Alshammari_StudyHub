@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+    Profile | StudyHub
+{% endblock %}
+
+
+{% block content %}
+
+    <section class="profile-page">
+
+        <div class="profile-card">
+
+            {% if profile_image_url %}
+
+                <img
+                    class="profile-avatar"
+                    src="{{ profile_image_url }}"
+                    alt="{{ user_name }} profile image"
+                >
+
+            {% else %}
+
+                <div class="profile-placeholder">
+                    {{ user_name|first|upper }}
+                </div>
+
+            {% endif %}
+
+            <div class="profile-information">
+
+                <p class="section-label">
+                    Learning Profile
+                </p>
+
+                <h1>{{ user_name }}</h1>
+
+                <p>
+                    Welcome to your StudyHub profile.
+                    You can upload or change your profile image here.
+                </p>
+
+            </div>
+
+        </div>
+
+        <form
+            class="account-form upload-form"
+            method="post"
+            enctype="multipart/form-data"
+            novalidate
+        >
+            {% csrf_token %}
+
+            <div
+                class="form-group
+                {% if form.profile_image.errors %}
+                    has-error
+                {% endif %}"
+            >
+                <label for="{{ form.profile_image.id_for_label }}">
+                    {{ form.profile_image.label }}
+                </label>
+
+                {{ form.profile_image }}
+
+                <p class="field-hint">
+                    Upload a JPG, JPEG, PNG, or WEBP image.
+                    Maximum size: 2 MB.
+                </p>
+
+                {% for error in form.profile_image.errors %}
+                    <p class="field-error">
+                        {{ error }}
+                    </p>
+                {% endfor %}
+            </div>
+
+            <button
+                class="primary-button account-submit"
+                type="submit"
+            >
+                Save Profile Image
+            </button>
+
+        </form>
+
+    </section>
+
+{% endblock %}

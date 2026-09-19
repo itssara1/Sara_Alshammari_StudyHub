@@ -1,0 +1,15 @@
+venv/
+.venv/
+
+__pycache__/
+*.py[cod]
+
+db.sqlite3
+
+media/profile_images/
+
+.env
+.vscode/
+
+.DS_Store
+Thumbs.db

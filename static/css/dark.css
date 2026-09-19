@@ -1,0 +1,49 @@
+:root {
+    --page-background: #071a24;
+    --header-background: rgba(7, 26, 36, 0.9);
+    --footer-background: #091f2b;
+
+    --primary-text: #edf8f6;
+    --secondary-text: #9db8c0;
+
+    /* Main blue */
+    --brand-color: #55aaff;
+    --brand-hover: #7bbdff;
+    --focus-color: rgba(85, 170, 255, 0.45);
+
+    --navigation-hover: #102f3f;
+
+    --card-background: #0d2633;
+    --border-color: #1b3e4a;
+    --card-hover-border: #40c9a7;
+
+    /* Green resource tags */
+    --tag-text: #78e2c7;
+    --tag-background: #123e3a;
+
+    --button-text: #ffffff;
+    --button-shadow:
+        0 10px 24px rgba(35, 137, 235, 0.25);
+    --button-hover-shadow:
+        0 14px 32px rgba(85, 170, 255, 0.35);
+
+    --card-shadow:
+        0 12px 35px rgba(0, 0, 0, 0.2);
+    --card-hover-shadow:
+        0 20px 48px rgba(0, 0, 0, 0.3);
+
+    --tab-background: #0a202c;
+    --active-tab-background: #163745;
+    --active-tab-text: #79c0ff;
+    --active-tab-shadow:
+        0 4px 14px rgba(0, 0, 0, 0.25);
+
+    /* Blue and green background glow */
+    --hero-decoration:
+        radial-gradient(
+            circle at 35% 35%,
+            rgba(53, 145, 235, 0.28) 0%,
+            rgba(44, 187, 151, 0.2) 45%,
+            rgba(7, 26, 36, 0) 75%
+        );
+}

@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+    Favorites | StudyHub
+{% endblock %}
+
+
+{% block content %}
+
+    <section class="page-heading">
+
+        <p class="section-label">
+            Your Collection
+        </p>
+
+        <h1>Favorite Resources</h1>
+
+        <p>
+            Keep your most useful learning resources
+            together in one convenient place.
+        </p>
+
+    </section>
+
+    <section class="resource-grid">
+
+        {% for resource in favorite_resources %}
+
+            <article class="resource-card">
+
+                <span class="resource-type">
+                    {{ resource.type }}
+                </span>
+
+                <h2>{{ resource.title }}</h2>
+
+                <p>{{ resource.description }}</p>
+
+                <div class="favorite-card-actions">
+
+                    <a
+                        class="card-link"
+                        href="{% url 'core:resource_detail' resource.id %}"
+                    >
+                        View Details
+                    </a>
+
+                    <form
+                        method="post"
+                        action="{% url 'core:remove_favorite' resource.id %}"
+                    >
+                        {% csrf_token %}
+
+                        <button
+                            class="remove-link"
+                            type="submit"
+                        >
+                            Remove
+                        </button>
+
+                    </form>
+
+                </div>
+
+            </article>
+
+        {% empty %}
+
+            <div class="empty-favorites">
+
+                <h2>No favorites yet</h2>
+
+                <p>
+                    Explore the resource library and save
+                    the resources you want to revisit.
+                </p>
+
+                <a
+                    class="primary-button"
+                    href="{% url 'core:resource_list' %}"
+                >
+                    Explore Resources
+                </a>
+
+            </div>
+
+        {% endfor %}
+
+    </section>
+
+{% endblock %}

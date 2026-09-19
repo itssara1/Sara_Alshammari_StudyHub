@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+    Login | StudyHub
+{% endblock %}
+
+
+{% block content %}
+
+    <section class="account-page">
+
+        <div class="account-introduction">
+
+            <p class="section-label">
+                Welcome to StudyHub
+            </p>
+
+            <h1>Create Your Learning Profile</h1>
+
+            <p>
+                Enter your name to personalize your StudyHub
+                experience and upload a profile image.
+            </p>
+
+        </div>
+
+        <form
+            class="account-form"
+            method="post"
+            novalidate
+        >
+            {% csrf_token %}
+
+            <div
+                class="form-group
+                {% if form.display_name.errors %}
+                    has-error
+                {% endif %}"
+            >
+                <label for="{{ form.display_name.id_for_label }}">
+                    {{ form.display_name.label }}
+                </label>
+
+                {{ form.display_name }}
+
+                {% for error in form.display_name.errors %}
+                    <p class="field-error">
+                        {{ error }}
+                    </p>
+                {% endfor %}
+            </div>
+
+            <button
+                class="primary-button account-submit"
+                type="submit"
+            >
+                Continue to Profile
+            </button>
+
+        </form>
+
+    </section>
+
+{% endblock %}

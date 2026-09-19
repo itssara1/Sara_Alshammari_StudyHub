@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+    Home | StudyHub
+{% endblock %}
+
+
+{% block content %}
+
+    <section class="hero">
+
+        <div class="hero-content">
+            <p class="hero-label">
+                Your Learning Space
+            </p>
+
+            <h1>
+                Learn new skills with trusted resources.
+            </h1>
+
+            <p class="hero-description">
+                StudyHub brings useful articles, guides, videos,
+                and external learning links together in one place.
+            </p>
+
+            <a
+                class="primary-button"
+                href="{% url 'core:resource_list' %}"
+            >
+                Explore Resources
+            </a>
+        </div>
+
+        <div class="hero-visual">
+            <img
+                src="{% static 'images/sample_resource.jpg' %}"
+                alt="A modern learning workspace"
+            >
+        </div>
+
+    </section>
+
+{% endblock %}

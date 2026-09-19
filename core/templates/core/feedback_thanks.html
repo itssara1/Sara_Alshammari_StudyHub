@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+    Thank You | StudyHub
+{% endblock %}
+
+
+{% block content %}
+
+    <section class="thanks-page">
+
+        <div class="success-icon">
+            ✓
+        </div>
+
+        <p class="section-label">
+            Feedback Submitted
+        </p>
+
+        <h1>
+            Thank you, {{ feedback_name }}!
+        </h1>
+
+        <p>
+            Your feedback was submitted successfully.
+            We appreciate you taking the time to help
+            improve StudyHub.
+        </p>
+
+        <div class="thanks-actions">
+
+            <a
+                class="primary-button"
+                href="{% url 'core:resource_list' %}"
+            >
+                Explore Resources
+            </a>
+
+            <a
+                class="secondary-link"
+                href="{% url 'core:home' %}"
+            >
+                Return Home
+            </a>
+
+        </div>
+
+    </section>
+
+{% endblock %}

@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+    Preferences | StudyHub
+{% endblock %}
+
+
+{% block content %}
+
+    <section class="preferences-page">
+
+        <div class="page-heading">
+            <p class="section-label">
+                Personalize StudyHub
+            </p>
+
+            <h1>Appearance Preferences</h1>
+
+            <p>
+                Choose the theme that feels most comfortable
+                for your learning experience.
+            </p>
+        </div>
+
+        <form
+            class="preferences-form"
+            method="post"
+        >
+            {% csrf_token %}
+
+            <fieldset>
+                <legend>Choose your theme</legend>
+
+                <div class="theme-options">
+
+                    <label class="theme-option">
+
+                        <input
+                            type="radio"
+                            name="theme"
+                            value="light"
+                            {% if theme == "light" %}
+                                checked
+                            {% endif %}
+                        >
+
+                        <span class="theme-preview light-preview">
+                            <span class="preview-header"></span>
+
+                            <span class="preview-content">
+                                <span class="preview-title"></span>
+                                <span class="preview-text"></span>
+                                <span class="preview-button"></span>
+                            </span>
+                        </span>
+
+                        <span class="theme-information">
+                            <strong>Light Theme</strong>
+
+                            <small>
+                                Bright, clean, and ideal for daytime.
+                            </small>
+                        </span>
+
+                    </label>
+
+                    <label class="theme-option">
+
+                        <input
+                            type="radio"
+                            name="theme"
+                            value="dark"
+                            {% if theme == "dark" %}
+                                checked
+                            {% endif %}
+                        >
+
+                        <span class="theme-preview dark-preview">
+                            <span class="preview-header"></span>
+
+                            <span class="preview-content">
+                                <span class="preview-title"></span>
+                                <span class="preview-text"></span>
+                                <span class="preview-button"></span>
+                            </span>
+                        </span>
+
+                        <span class="theme-information">
+                            <strong>Dark Theme</strong>
+
+                            <small>
+                                Comfortable, focused, and easy on the eyes.
+                            </small>
+                        </span>
+
+                    </label>
+
+                </div>
+            </fieldset>
+
+            <button
+                class="primary-button save-preference"
+                type="submit"
+            >
+                Save Preference
+            </button>
+
+        </form>
+
+    </section>
+
+{% endblock %}

@@ -1,0 +1,118 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+    {{ resource.title }} | StudyHub
+{% endblock %}
+
+
+{% block content %}
+
+    <section class="resource-detail">
+        <a
+            class="back-link"
+            href="{% url 'core:resource_list' %}"
+        >
+            ← Back to Resources
+        </a>
+
+        <span class="resource-type">
+            {{ resource.type }}
+        </span>
+
+        <h1>{{ resource.title }}</h1>
+
+        <nav class="detail-tabs">
+            <a
+                href="{% url 'core:resource_detail' resource.id %}?tab=overview"
+                {% if selected_tab == "overview" %}
+                    class="active-tab"
+                {% endif %}
+            >
+                Overview
+            </a>
+
+            <a
+                href="{% url 'core:resource_detail' resource.id %}?tab=details"
+                {% if selected_tab == "details" %}
+                    class="active-tab"
+                {% endif %}
+            >
+                Details
+            </a>
+        </nav>
+
+        <div class="detail-content">
+
+            {% if selected_tab == "details" %}
+
+                <h2>Resource Details</h2>
+
+                <p>
+                    <strong>Resource ID:</strong>
+                    {{ resource.id }}
+                </p>
+
+                <p>
+                    <strong>Resource Type:</strong>
+                    {{ resource.type }}
+                </p>
+
+                <a
+                    class="primary-button"
+                    href="{{ resource.url }}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Open Learning Resource
+                </a>
+
+            {% else %}
+
+                <h2>Overview</h2>
+
+                <p>{{ resource.description }}</p>
+
+            {% endif %}
+
+        </div>
+        <div class="favorite-actions">
+
+    {% if is_favorite %}
+
+        <form
+            method="post"
+            action="{% url 'core:remove_favorite' resource.id %}"
+        >
+            {% csrf_token %}
+
+            <button
+                class="remove-button"
+                type="submit"
+            >
+                Remove from Favorites
+            </button>
+        </form>
+
+    {% else %}
+
+        <form
+            method="post"
+            action="{% url 'core:add_favorite' resource.id %}"
+        >
+            {% csrf_token %}
+
+            <button
+                class="primary-button"
+                type="submit"
+            >
+                Add to Favorites
+            </button>
+        </form>
+
+    {% endif %}
+
+    </div>
+    </section>
+
+{% endblock %}

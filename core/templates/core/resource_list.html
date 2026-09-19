@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+    Resources | StudyHub
+{% endblock %}
+
+
+{% block content %}
+
+    <section class="page-heading">
+        <p class="section-label">
+            Resource Library
+        </p>
+
+        <h1>Learning Resources</h1>
+
+        <p>
+            Explore useful resources selected to support
+            your learning journey.
+        </p>
+    </section>
+
+    <section class="resource-grid">
+
+        {% for resource in resources %}
+
+            <article class="resource-card">
+                <span class="resource-type">
+                    {{ resource.type }}
+                </span>
+
+                <h2>{{ resource.title }}</h2>
+
+                <p>{{ resource.description }}</p>
+                <a class="card-link"
+                     href="{% url 'core:resource_detail' resource.id %}">
+                        View Details
+                </a>
+            </article>
+
+        {% empty %}
+
+            <p class="empty-message">
+                No learning resources are currently available.
+            </p>
+
+        {% endfor %}
+
+    </section>
+
+{% endblock %}
